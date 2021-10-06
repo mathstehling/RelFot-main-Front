@@ -6,4 +6,5 @@ export const colors = {
   greyMedium: "#D8D8D8",
   grey: "#C4C4C4",
   textImage: "#FFF202",
+  errou: "#FF0000",
 };

@@ -2,7 +2,7 @@ import React from "react";
 import {
   BaseView,
   SubTitle,
-  PickerContrato,
+  PickerContract,
   PickerLote,
   PickerRegional,
   PickerEqp,
@@ -17,14 +17,14 @@ export const FormScreen = ({ navigation }) => {
     <BaseView ml={24} mt={60}>
       <Image source={logo} />
       <SubTitle mt={20} mb={16}>
+        Selecione uma regional:
+      </SubTitle>
+      <PickerRegional />
+      <SubTitle mt={16} mb={16}>
         Selecione um contrato:
       </SubTitle>
-      <PickerContrato />
-      <SubTitle mt={16} mb={16}>
-        Selecione um lote:
-      </SubTitle>
-      <PickerLote />
-      <SubTitle mt={16} mb={16}>
+      <PickerContract />
+      {/* <SubTitle mt={16} mb={16}>
         Selecione uma regional:
       </SubTitle>
       <PickerRegional />
@@ -35,7 +35,7 @@ export const FormScreen = ({ navigation }) => {
       <SubTitle mt={16} mb={16}>
         Selecione um período:
       </SubTitle>
-      <PickerPeriodo />
+      <PickerPeriodo />  */}
       <BaseView fullWidth mt={80} mr={24} ml={8}>
         <LargeButton
           children={"Inserir Imagens"}

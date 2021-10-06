@@ -58,6 +58,12 @@ export const Title = styled(DefaultText).attrs({})`
   font-family: "Inter_700Bold";
 `;
 
+export const Error = styled(DefaultText).attrs({})`
+  font-size: ${({ theme }) => theme.metrics.px(16)}px;
+  font-family: "Inter_700Bold";
+  color: ${({ theme, error }) => (error ? theme.colors.errou : "transparent")};
+`;
+
 export const SubTitle = styled(DefaultText).attrs({
   fontSize: 16,
 })``;
