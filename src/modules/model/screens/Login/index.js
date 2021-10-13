@@ -19,7 +19,7 @@ export const LoginScreen = ({ navigation }) => {
   const { setRegionalStore } = useRegionalStore();
 
   async function sendForm() {
-    let response = await fetch("http://192.168.10.103:3333/login", {
+    let response = await fetch("http://192.168.1.151:8584/login", {
       method: "POST",
       headers: {
         Accept: "application/json",

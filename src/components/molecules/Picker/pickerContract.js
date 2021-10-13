@@ -5,15 +5,15 @@ import RNPickerSelect, { defaultSyles } from "react-native-picker-select";
 import { PickerContainer } from "./styles";
 import axios from "axios";
 import { Entypo } from "@expo/vector-icons";
-import { useUserStore, useRegionalStore } from "../../../services";
+import { useContractStore, useRegionalStore } from "../../../services";
 
 export const PickerContract = () => {
   const [contract, setContract] = useState([]);
-  const { userAuth } = useUserStore();
+  const { setContractStore } = useContractStore();
   const { regionalStore } = useRegionalStore();
 
   /*  const userId = userAuth.id; */
-  console.log(regionalStore);
+  /* console.log(regionalStore); */
 
   const placeholder = {
     label: "Selecione o contrato",
@@ -22,22 +22,29 @@ export const PickerContract = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://192.168.10.103:3333/regional/" + regionalStore + "/contract")
-      .then((response) => {
-        setContract(
-          response.data.map((response) => ({
-            label: response.name_contract,
-            key: response.name_contract,
-            value: [
-              {
-                value: response.name_contract,
-                id: response.id,
-              },
-            ],
-          }))
-        );
-      });
+    if (regionalStore === null) {
+      null;
+    } else {
+      axios
+        .get(
+          "http://192.168.1.151:8584/regional/" + regionalStore + "/contract"
+        )
+        .then((response) => {
+          setContract(
+            response.data.map((response) => ({
+              label: response.name_contract,
+              key: response.name_contract,
+              value: [
+                {
+                  value: response.name_contract,
+                  id: response.id,
+                },
+              ],
+            }))
+          );
+          /* console.log(response); */
+        });
+    }
   }, [regionalStore]);
 
   return (
@@ -51,7 +58,14 @@ export const PickerContract = () => {
           right: 28,
         },
       }}
-      onValueChange={(value) => console.log(value)}
+      onValueChange={(value) => {
+        if (value === null) {
+          return "Selecionar Regional";
+        } else {
+          const idContract = value.map((item) => item.id);
+          setContractStore(idContract[0]);
+        }
+      }}
       items={contract}
       Icon={() => {
         return <Entypo name="chevron-small-down" size={22} color="black" />;

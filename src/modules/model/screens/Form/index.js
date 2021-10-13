@@ -3,7 +3,6 @@ import {
   BaseView,
   SubTitle,
   PickerContract,
-  PickerLote,
   PickerRegional,
   PickerEqp,
   PickerPeriodo,
@@ -24,11 +23,11 @@ export const FormScreen = ({ navigation }) => {
         Selecione um contrato:
       </SubTitle>
       <PickerContract />
-      {/* <SubTitle mt={16} mb={16}>
-        Selecione uma regional:
-      </SubTitle>
-      <PickerRegional />
       <SubTitle mt={16} mb={16}>
+        Selecione um equipamento:
+      </SubTitle>
+      <PickerEqp />
+      {/*  <SubTitle mt={16} mb={16}>
         Selecione um equipamento:
       </SubTitle>
       <PickerEqp />

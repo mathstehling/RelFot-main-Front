@@ -23,7 +23,7 @@ export const PickerRegional = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.10.103:3333/users/" + userId + "/regional")
+      .get("http://192.168.1.151:8584/users/" + userId + "/regional")
       .then((response) => {
         setRegional(
           response.data.map((response) => ({
