@@ -60,7 +60,7 @@ export const PickerContract = () => {
       }}
       onValueChange={(value) => {
         if (value === null) {
-          return "Selecionar Regional";
+          return "Selecionar Contrato";
         } else {
           const idContract = value.map((item) => item.id);
           setContractStore(idContract[0]);

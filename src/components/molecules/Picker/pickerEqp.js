@@ -5,13 +5,18 @@ import RNPickerSelect, { defaultSyles } from "react-native-picker-select";
 import { PickerContainer } from "./styles";
 import axios from "axios";
 import { Entypo } from "@expo/vector-icons";
-import { useContractStore, useRegionalStore } from "../../../services";
+import {
+  useContractStore,
+  useRegionalStore,
+  useEquipmentStore,
+} from "../../../services";
 
 export const PickerEqp = () => {
   const [equipment, setEquipment] = useState([]);
 
   const { regionalStore } = useRegionalStore();
   const { contractStore } = useContractStore();
+  const { setEquipmentStore } = useEquipmentStore();
 
   /*  const userId = userAuth.id; */
   /*  console.log(regionalStore);
@@ -33,7 +38,6 @@ export const PickerEqp = () => {
           "/equipments"
       )
       .then((response) => {
-        console.log(response);
         setEquipment(
           response.data.map((response) => ({
             label: response.number_equipment + " - " + response.way,
@@ -55,7 +59,7 @@ export const PickerEqp = () => {
           right: 28,
         },
       }}
-      onValueChange={(value) => console.log(value)}
+      onValueChange={(value) => setEquipmentStore(value)}
       items={equipment}
       Icon={() => {
         return <Entypo name="chevron-small-down" size={22} color="black" />;

@@ -9,8 +9,24 @@ import {
 } from "../../../../components";
 import logo from "../../../../assets/img/GCT.png";
 import { Image } from "./styles";
+import {
+  useContractStore,
+  useEquipmentStore,
+  useDateStore,
+  useRegionalStore,
+} from "../../../../services";
 
 export const ImageSignalingScreen = ({ navigation }) => {
+  const { regionalStore } = useRegionalStore();
+  const { contractStore } = useContractStore();
+  const { equipmentStore } = useEquipmentStore();
+  const { dateStore } = useDateStore();
+
+  console.log(regionalStore);
+  console.log(contractStore);
+  console.log(equipmentStore);
+  console.log(dateStore);
+
   return (
     <BaseView ml={24} mt={60}>
       <Image source={logo} />

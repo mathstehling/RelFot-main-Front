@@ -16,15 +16,18 @@ import * as Permissions from "expo-permissions";
 import * as MediaLibrary from "expo-media-library";
 import ViewShot from "react-native-view-shot";
 import * as Location from "expo-location";
+import { useDateStore, useEquipmentStore } from "../../../../services";
 
 export function CameraScreen() {
   const camRef = useRef(null);
   const viewShotRef = useRef();
-  const [type, setType] = useState(Camera.Constants.Type.front);
+  const [type, setType] = useState(Camera.Constants.Type.back);
   const [location, setLocation] = useState(null);
   const [hasPermission, setHasPermission] = useState(null);
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [open, setOpen] = useState(false);
+  const { dateStore } = useDateStore();
+  const { equipmentStore } = useEquipmentStore();
 
   useEffect(() => {
     (async () => {
@@ -40,9 +43,6 @@ export function CameraScreen() {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       setHasPermission(status === "granted");
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      console.log(location.coords.longitude);
     })();
   }, []);
 
@@ -81,9 +81,15 @@ export function CameraScreen() {
       });
   }
 
-  const coordinate = "-15.202102, 16.828151";
-  const city = "Entre Rios";
-  const data = "17/06/2021";
+  console.log(equipmentStore.city);
+  console.log(dateStore);
+
+  const latitude =
+    equipmentStore.map((item) => item.latitude) +
+    ", " +
+    equipmentStore.map((item) => item.longitude);
+  const city = equipmentStore.map((item) => item.city);
+  const data = dateStore;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -139,7 +145,7 @@ export function CameraScreen() {
               >
                 <BaseView mt={500} ml={8}>
                   <TextImage>{data}</TextImage>
-                  <TextImage>{coordinate}</TextImage>
+                  <TextImage>{latitude}</TextImage>
                   <TextImage>{city}</TextImage>
                 </BaseView>
               </ImageBackground>

@@ -94,6 +94,13 @@ export const TextButton = styled(DefaultText).attrs({
   font-family: Inter_700Bold;
 `;
 
+export const TextButtonDate = styled(DefaultText).attrs({
+  fontSize: 15,
+  color: "grey",
+})`
+  font-family: Inter_400Regular;
+`;
+
 export const TextImage = styled(DefaultText).attrs({
   fontSize: 25,
   color: "textImage",

@@ -9,7 +9,7 @@ import {
 } from "../../../../components";
 import logo from "../../../../assets/img/GCT.png";
 import { Image } from "./styles";
-import { useUserStore, useRegionalStore } from "../../../../services";
+import { useUserStore, useRegionalStore, ip } from "../../../../services";
 
 export const LoginScreen = ({ navigation }) => {
   const [error, setError] = useState(false);

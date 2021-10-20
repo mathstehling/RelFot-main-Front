@@ -1,6 +1,6 @@
 import React from "react";
 import { BaseTouch } from "../Container";
-import { TextButton } from "../Text";
+import { TextButton, TextButtonDate } from "../Text";
 
 export const LargeButton = ({ onPress, children }) => {
   return (
@@ -12,6 +12,21 @@ export const LargeButton = ({ onPress, children }) => {
       onPress={onPress}
     >
       <TextButton>{children}</TextButton>
+    </BaseTouch>
+  );
+};
+
+export const ButtonDate = ({ onPress, children }) => {
+  return (
+    <BaseTouch
+      align={"flex-start"}
+      width={300}
+      height={28}
+      br={0}
+      bg={"primary"}
+      onPress={onPress}
+    >
+      <TextButtonDate ml={7}>{children}</TextButtonDate>
     </BaseTouch>
   );
 };
